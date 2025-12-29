@@ -47,6 +47,20 @@ button:active{
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr) );
 }
 
+.loader {
+  border: 8px solid #f3f3f3; /* Light grey base circle */
+  border-top: 8px solid #3498db; /* Blue spinning arc */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .card {
     background-color: white;
 }
@@ -54,4 +68,12 @@ button:active{
 .card img {
     width:100%;
     border-radius: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+p{
+    color:red;
 }
