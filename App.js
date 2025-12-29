@@ -37,6 +37,8 @@ try{
         return;
         
     }
+
+    displayMeals(mealData.meals);
 }
 catch(error){
     setText(errorEl,error.message);
@@ -45,4 +47,31 @@ finally{
     hide(loaderEl);
 }
 
+}
+
+
+function displayMeals(meals){
+    meals.map(meal=>{
+        const card=document.createElement("div");
+        card.classList.add("card");
+
+        //add the inner html
+        card.innerHTML=`
+        <img src="${meal.strMealThumb}"><br>
+        <p>${meal.strMeal}</p>
+        <p>${meal.strArea}</p>
+        `;
+
+        //take it to another page to show the instruction when you click the card element
+        card.addEventListener('click',()=>{
+            //save the current instruction to localeStorage to pass it to the recipe.html file
+            localStorage.setItem("instructions",meal.strInstructions);
+            localStorage.setItem("meal",meal.strMeal);
+            //go the page
+            window.location.href="recipe.html"
+        });
+
+        //append it to the result div container
+        resultEl.appendChild(card);
+    });
 }
