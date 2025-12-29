@@ -12,6 +12,9 @@ const loaderEl=document.getElementById("loader");
 
 //add event listener
 buttonEl.addEventListener('click',serveRecipe);
+inputEl.addEventListener('keydown',e=>{
+    if(e.key==='Enter') serveRecipe();
+});
 
 
 async function serveRecipe(){
@@ -66,6 +69,7 @@ function displayMeals(meals){
         card.addEventListener('click',()=>{
             //save the current instruction to localeStorage to pass it to the recipe.html file
             localStorage.setItem("instructions",meal.strInstructions);
+           
             localStorage.setItem("meal",meal.strMeal);
             //go the page
             window.location.href="recipe.html"
